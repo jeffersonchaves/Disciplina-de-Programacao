@@ -1,5 +1,6 @@
 <?php
 
+    /** atividade avaliativa*/
 
     $numeros = array();
 
