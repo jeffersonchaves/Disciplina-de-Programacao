@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Loteca IFC</title>
+
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- colar aqui -->
+                <h1>Hello, world!</h1>
+
+                <form class="form-horizontal" method="get" action="seleciona_jogo.php" >
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Form Name</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="nome">Nome</label>
+                            <div class="col-md-4">
+                                <input id="nome" name="nome" placeholder="digite seu nome" class="form-control input-md" type="text">
+                                <span class="help-block">*</span>
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="jogo-selecionado">Selecione seu jogo</label>
+                            <div class="col-md-4">
+                                <select id="jogo-selecionado" name="jogoselecionado" class="form-control">
+                                    <option value="1">Mega-Sena</option>
+                                    <option value="2">Quina</option>
+                                    <option value="3">Lotomania</option>
+                                    <option value="4">Lotofácil</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="singlebutton"></label>
+                            <div class="col-md-4">
+                                <button id="singlebutton" name="singlebutton" class="btn btn-success">Jogar!</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
