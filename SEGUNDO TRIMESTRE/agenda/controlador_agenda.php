@@ -35,8 +35,32 @@
 
     }
 
+    function editarContato(){
+
+    }
+
+    function excluirContato($idContato){
+
+        $contatos = file_get_contents("contatos.json", true); //guardando os resultados
+        $contatos = json_decode($contatos, true); // convertendo para um array
+        
+        foreach($contatos as $posicao => $contato){
+
+            if($contato['id'] == $idContato){
+                unset($contatos[$posicao]);
+                break;
+            }
+        }
+
+        $contatos = json_encode($contatos, JSON_PRETTY_PRINT);
+        file_put_contents("contatos.json", $contatos);
+
+        header('Location: index.php');
+    }
 
     //GERENCIAMENTE DE ROTAS
     if ($_GET['acao'] == 'cadastrar'){
         cadastrar();
+    } elseif($_GET['acao'] == 'excluir'){
+        excluirContato($_GET['id']);
     }

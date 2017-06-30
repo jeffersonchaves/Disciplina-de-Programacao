@@ -1,38 +1,14 @@
-[
-    {
-        "id": "594d21b5b9bfd",
-        "nome": "Jefferson",
-        "email": "jefferson.chaves@gmail.com",
-        "telefone": "(47) 997557422"
-    },
-    {
-        "id": "594d2243b1e47",
+{
+    "5": {
+        "id": "59527040bb477",
         "nome": "Fabio Curto de Moura",
         "email": "fabio@ifc.com",
-        "telefone": "(47) 49228922"
+        "telefone": "(47) 997557422"
     },
-    {
-        "id": "594d2419389c5",
-        "nome": "",
-        "email": "",
-        "telefone": ""
-    },
-    {
-        "id": "594d29c31ba07",
-        "nome": "Mario",
-        "email": "mario@gmail.com",
-        "telefone": "(47) 9999999"
-    },
-    {
-        "id": "594d2a3b1d2da",
-        "nome": "Jefferson Chaves",
-        "email": "jefferson7chaves@gmail.com",
-        "telefone": "(47) 98989898"
-    },
-    {
-        "id": "595261560259d",
+    "6": {
+        "id": "5952855941779",
         "nome": "Jefferson Chaves",
         "email": "jefferson7chaves@gmail.com",
         "telefone": "(47) 997557422"
     }
-]
+}

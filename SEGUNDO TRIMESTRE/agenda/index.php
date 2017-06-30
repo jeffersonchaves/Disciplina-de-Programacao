@@ -63,16 +63,18 @@
 							<th>Nome</th>
 							<th>Email</th>
 							<th>Telefone</th>
+							<th>Açoes</th>
 						</tr>
 					</thead>
 					<tbody>
 						<!-- repetir -->
                         <?php foreach ($meusContatos as $contato): ?>
 						<tr>
-							<td><?= $contato['id'] ?></td>
-							<td><?= $contato['nome'] ?></td>
-							<td><?= $contato['email'] ?></td>
+							<td><?= $contato['id'] ?>      </td>
+							<td><?= $contato['nome'] ?>    </td>
+							<td><?= $contato['email'] ?>   </td>
 							<td><?= $contato['telefone'] ?></td>
+							<td><a href="controlador_agenda.php?acao=excluir&id=<?= $contato['id'] ?>">excluir</a> </td>
 						</tr>
                         <?php endforeach; ?>
 
