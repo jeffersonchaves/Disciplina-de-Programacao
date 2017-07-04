@@ -1,66 +1,87 @@
-<?php //controlador agenda
+<?php
 
-    function cadastrar(){
+    function cadastrar($nome){
 
-        //colar aqui pelo amor dos meus bigodes
-        $contatos = file_get_contents("contatos.json", true); //guardando os resultados
-        $contatos = json_decode($contatos, true); // convertendo para um array
+        $contatosAuxiliar = file_get_contents('contatos.json');
+        $contatosAuxiliar = json_decode($contatosAuxiliar, true);
 
         $contato = [
-            "id"       => uniqid(), //gerar um id novo e diferente de todos cada vez que atualizar
-            "nome"     => $_POST['nome'],
-            "email"    => $_POST['email'],
-            "telefone" => $_POST['telefone']
+            'id'      => uniqid(),
+            'nome'    => $nome,
+            'email'   => $_POST['email'],
+            'telefone'=> $_POST['telefone']
         ];
 
-        array_push($contatos, $contato);
+        array_push($contatosAuxiliar, $contato);
 
-        $dados_json = json_encode($contatos, JSON_PRETTY_PRINT); //arrumar na hora de executar
+        $contatosJson = json_encode($contatosAuxiliar, JSON_PRETTY_PRINT);
 
-        //atualizar o conteudo do arquivo
-        file_put_contents("contatos.json", $dados_json);
+        file_put_contents('contatos.json', $contatosJson);
 
-        header('Location: index.php');
-
-
-    } //fim cadastrar()
-
+        header("Location: index.phtml");
+    }
 
     function pegarContatos(){
+        $contatosAuxiliar = file_get_contents('contatos.json');
+        $contatosAuxiliar = json_decode($contatosAuxiliar, true);
 
-        $contatos = file_get_contents("contatos.json", true); //guardando os resultados
-        $contatos = json_decode($contatos, true); // convertendo para um array
-
-        return $contatos;
-
+        return $contatosAuxiliar;
     }
 
-    function editarContato(){
+    function excluirContato($id){
 
+        $contatosAuxiliar = file_get_contents('contatos.json');
+        $contatosAuxiliar = json_decode($contatosAuxiliar, true);
+
+        foreach ($contatosAuxiliar as $posicao => $contato){
+            if($id == $contato['id']) {
+                unset($contatosAuxiliar[$posicao]);
+            }
+        }
+
+        $contatosJson = json_encode($contatosAuxiliar, JSON_PRETTY_PRINT);
+        file_put_contents('contatos.json', $contatosJson);
+
+        header('Location: index.phtml');
     }
 
-    function excluirContato($idContato){
+    function editarContato($id){
 
-        $contatos = file_get_contents("contatos.json", true); //guardando os resultados
-        $contatos = json_decode($contatos, true); // convertendo para um array
-        
-        foreach($contatos as $posicao => $contato){
+        $contatosAuxiliar = file_get_contents('contatos.json');
+        $contatosAuxiliar = json_decode($contatosAuxiliar, true);
 
-            if($contato['id'] == $idContato){
-                unset($contatos[$posicao]);
+        foreach ($contatosAuxiliar as $contato){
+            if ($contato['id'] == $id){
+                return $contato;
+            }
+        }
+    }
+
+    function salvarContatoEditado($id){
+        $contatosAuxiliar = file_get_contents('contatos.json');
+        $contatosAuxiliar = json_decode($contatosAuxiliar, true);
+
+        foreach ($contatosAuxiliar as $posicao => $contato){
+            if ($contato['id'] == $id){
+
+                $contatosAuxiliar[$posicao]['nome'] = $_POST['nome'];
+                $contatosAuxiliar[$posicao]['email'] = $_POST['email'];
+                $contatosAuxiliar[$posicao]['telefone'] = $_POST['telefone'];
+
                 break;
             }
         }
 
-        $contatos = json_encode($contatos, JSON_PRETTY_PRINT);
-        file_put_contents("contatos.json", $contatos);
+        $contatosJson = json_encode($contatosAuxiliar, JSON_PRETTY_PRINT);
+        file_put_contents('contatos.json', $contatosJson);
 
-        header('Location: index.php');
+        header('Location: index.phtml');
+
     }
 
-    //GERENCIAMENTE DE ROTAS
-    if ($_GET['acao'] == 'cadastrar'){
-        cadastrar();
-    } elseif($_GET['acao'] == 'excluir'){
-        excluirContato($_GET['id']);
-    }
+    //ROTAS
+        if ($_GET['acao'] == 'cadastrar'){
+            cadastrar($_POST['nome']);
+        } elseif ($_GET['acao'] == 'excluir'){
+            excluirContato($_GET['id']);
+        }
