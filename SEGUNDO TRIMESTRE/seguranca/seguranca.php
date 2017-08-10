@@ -59,7 +59,7 @@ require_once 'config/config.php';
 	
 	</div>
 	<footer>
-		<p>Portal EspecializaTi - especializati.com.br</p>
+		<p>Instituto Federal Catarinense</p>
 	</footer>
 </body>
 </html>
